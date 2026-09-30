@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Mahdi Scholarship Program Application</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="deadlineBanner" class="banner hidden">
+    Applications for the 2026 Al Mahdi Scholarship Program are now closed. The application deadline was November 30, 2026 at 11:59 PM.
+</div>
+
+<main id="appContainer">
+    <header class="app-header">
+        <!-- Replace src with actual extracted logo from PDF -->
+        <img src="assets/logo-placeholder.png" alt="Al Mahdi Islamic Community Centre Logo" class="logo" id="orgLogo">
+        <h1>Al Mahdi Scholarship Program Application</h1>
+    </header>
+
+    <section class="intro-section">
+        <div class="deadline-card">
+            <strong>APPLICATION DEADLINE</strong><br>
+            November 30, 2026 at 11:59 PM
+        </div>
+        <p>Salaam Alaikum,</p>
+        <p>The Council of Islamic Guidance is excited to present the Al Mahdi Scholarship program. As mentioned in our application document, this form will serve as the submission platform for your total application. Please read through each section of the document carefully to ensure you have uploaded the correct files and documents.</p>
+        <p>As a reminder, the deadline for the scholarship application is Nov. 30th 2026 by 11:59 PM. If you have any questions or concerns, please do not hesitate to reach out by email to <a href="mailto:scholarships@cig.ca">scholarships@cig.ca</a>. We wish you all the best on your application.</p>
+        <p>Jazakallah</p>
+        
+        <div class="privacy-notice-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <p><strong>Privacy & Security:</strong> The name, email, and files provided in this form will be securely recorded in the Council of Islamic Guidance's internal systems. Files will be accessible only to authorized evaluation committee members.</p>
+        </div>
+    </section>
+
+    <form id="scholarshipForm" novalidate>
+        <!-- Section 1: Applicant Information -->
+        <section class="form-section">
+            <h2>Applicant Information</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required>
+                    <span class="error-msg" id="error-fullName">Please enter your full name.</span>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" min="15" max="100" required>
+                    <span class="error-msg" id="error-age">Please enter a valid age.</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Applicant Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-msg" id="error-email">Please enter a valid email address.</span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="e.g. 416-555-0123" required>
+                    <span class="error-msg" id="error-phone">Please enter a valid Canadian phone number.</span>
+                </div>
+                <div class="form-group full-width">
+                    <label for="program">Post-Secondary Program & Year <span class="required">*</span></label>
+                    <input type="text" id="program" name="program" placeholder="e.g. Bachelor of Commerce, 2nd Year" required>
+                    <span class="error-msg" id="error-program">Please enter your program and year.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Membership Verification -->
+        <section class="form-section">
+            <h2>Membership Verification</h2>
+            <p class="section-desc">Please enter the email address associated with your Al Mahdi / Council of Islamic Guidance membership. This may be your own email address or the email address of the parent/guardian under whose family membership you are registered. This information will be verified against our membership records.</p>
+            <div class="form-group full-width">
+                <label for="membershipEmail">Membership Email Address <span class="required">*</span></label>
+                <input type="email" id="membershipEmail" name="membershipEmail" required>
+                <span class="error-msg" id="error-membershipEmail">Please enter a valid membership email address.</span>
+            </div>
+        </section>
+
+        <!-- Section 3: Reference Contact Information -->
+        <section class="form-section">
+            <h2>Reference Contact Information</h2>
+            <p class="section-desc">Please include the following information in regards to the additional reference (not the one who provided the letter of recommendation). <strong>Please note: the additional reference listed below should be a different individual from the person who provided your uploaded letter of recommendation.</strong></p>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="refName">Reference Name <span class="required">*</span></label>
+                    <input type="text" id="refName" name="refName" required>
+                    <span class="error-msg" id="error-refName">Please enter the reference's name.</span>
+                </div>
+                <div class="form-group">
+                    <label for="refPhone">Reference Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="refPhone" name="refPhone" required>
+                    <span class="error-msg" id="error-refPhone">Please enter the reference's phone number.</span>
+                </div>
+                <div class="form-group">
+                    <label for="refEmail">Reference Email <span class="required">*</span></label>
+                    <input type="email" id="refEmail" name="refEmail" required>
+                    <span class="error-msg" id="error-refEmail">Please enter the reference's email.</span>
+                </div>
+                <div class="form-group">
+                    <label for="refTitle">Reference Position/Title <span class="required">*</span></label>
+                    <input type="text" id="refTitle" name="refTitle" required>
+                    <span class="error-msg" id="error-refTitle">Please enter the reference's title.</span>
+                </div>
+                <div class="form-group full-width">
+                    <label for="refRelation">Relationship to Applicant <span class="required">*</span></label>
+                    <select id="refRelation" name="refRelation" required onchange="toggleOtherRelation()">
+                        <option value="" disabled selected>Select relationship...</option>
+                        <option value="Work">Work</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Volunteer Coordinator">Volunteer Coordinator</option>
+                        <option value="Community Leader">Community Leader</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="refRelationOther" name="refRelationOther" class="hidden mt-2" placeholder="Please specify">
+                    <span class="error-msg" id="error-refRelation">Please specify your relationship.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Required Documents -->
+        <section class="form-section">
+            <h2>Required Documents</h2>
+            <p class="section-desc">Please upload the required documents below. All files must be in PDF format. Maximum file size is 10MB per file to ensure secure and reliable delivery to our servers.</p>
+            
+            <div class="upload-grid">
+                <!-- Gov ID -->
+                <div class="upload-card" id="card-govId">
+                    <label for="govId">Government-issued ID <span class="required">*</span></label>
+                    <p class="upload-desc">Please upload a Government-issued ID as a PDF (Driver's license, Health card, birth certificate, etc.)</p>
+                    <input type="file" id="govId" name="govId" accept="application/pdf" required onchange="handleFileSelect(event, 'govId')">
+                    <div class="file-name" id="filename-govId">No file selected</div>
+                    <span class="error-msg" id="error-govId">Please upload your Government ID.</span>
+                </div>
+
+                <!-- Student ID (Optional) -->
+                <div class="upload-card" id="card-studentId">
+                    <label for="studentId">Student ID (Optional)</label>
+                    <p class="upload-desc">Please upload your Student ID from your current or incoming year as a PDF (if available)</p>
+                    <input type="file" id="studentId" name="studentId" accept="application/pdf" onchange="handleFileSelect(event, 'studentId')">
+                    <div class="file-name" id="filename-studentId">No file selected</div>
+                    <span class="error-msg" id="error-studentId">Invalid file.</span>
+                </div>
+
+                <!-- Transcript -->
+                <div class="upload-card" id="card-transcript">
+                    <label for="transcript">Transcript <span class="required">*</span></label>
+                    <p class="upload-desc">Please upload your High school or College/University Transcript as a PDF (Unofficial transcripts are sufficient)</p>
+                    <input type="file" id="transcript" name="transcript" accept="application/pdf" required onchange="handleFileSelect(event, 'transcript')">
+                    <div class="file-name" id="filename-transcript">No file selected</div>
+                    <span class="error-msg" id="error-transcript">Please upload your transcript.</span>
+                </div>
+
+                <!-- Proof of Admission -->
+                <div class="upload-card" id="card-proofOfAdmission">
+                    <label for="proofOfAdmission">Proof of Admission <span class="required">*</span></label>
+                    <p class="upload-desc">Please upload Proof of Admission to a Post-Secondary Canadian Accredited Institution as a PDF</p>
+                    <input type="file" id="proofOfAdmission" name="proofOfAdmission" accept="application/pdf" required onchange="handleFileSelect(event, 'proofOfAdmission')">
+                    <div class="file-name" id="filename-proofOfAdmission">No file selected</div>
+                    <span class="error-msg" id="error-proofOfAdmission">Please upload your proof of admission.</span>
+                </div>
+
+                <!-- Recommendation Letter -->
+                <div class="upload-card" id="card-recLetter">
+                    <label for="recLetter">Letter of Recommendation <span class="required">*</span></label>
+                    <p class="upload-desc">Please upload a letter of recommendation as a PDF (academic or professional)</p>
+                    <input type="file" id="recLetter" name="recLetter" accept="application/pdf" required onchange="handleFileSelect(event, 'recLetter')">
+                    <div class="file-name" id="filename-recLetter">No file selected</div>
+                    <span class="error-msg" id="error-recLetter">Please upload your recommendation letter.</span>
+                </div>
+
+                <!-- Essay Response -->
+                <div class="upload-card" id="card-essay">
+                    <label for="essay">Essay Response <span class="required">*</span></label>
+                    <p class="upload-desc">Please upload your response to the Essay Question as a PDF (Min 500 words, Max 1000, Times New Roman, Size 12, Double-spaced)</p>
+                    <input type="file" id="essay" name="essay" accept="application/pdf" required onchange="handleFileSelect(event, 'essay')">
+                    <div class="file-name" id="filename-essay">No file selected</div>
+                    <span class="error-msg" id="error-essay">Please upload your essay response.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Final Declaration -->
+        <section class="form-section declaration-section">
+            <label class="checkbox-container">
+                <input type="checkbox" id="declaration" name="declaration" required>
+                <span class="checkmark"></span>
+                <span class="declaration-text">I certify that the information provided in this application is complete and accurate to the best of my knowledge, and that the documents submitted are authentic and belong to me. <span class="required">*</span></span>
+            </label>
+            <span class="error-msg" id="error-declaration">You must agree to the declaration before submitting.</span>
+        </section>
+
+        <div id="system-error" class="hidden error-alert"></div>
+
+        <div class="submit-container">
+            <button type="submit" id="submitBtn">Submit Application</button>
+            <div id="loadingState" class="hidden">
+                <div class="spinner"></div>
+                <span id="loadingText">Initializing submission...</span>
+            </div>
+        </div>
+
+        <div class="footer-privacy">
+            Information submitted through this application will be used for the administration and evaluation of the Al Mahdi Scholarship Program and will be accessible only to authorized individuals involved in the scholarship process.
+        </div>
+    </form>
+
+    <div id="successState" class="hidden success-container">
+        <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <h2>Application Submitted Successfully</h2>
+        <p>JazakAllah for submitting your application to the Al Mahdi Scholarship Program. Your application has been received.</p>
+        <div class="app-id-card">
+            Application ID:<br>
+            <strong id="displayAppId">---</strong>
+        </div>
+        <p>Please save this Application ID for your records. You will receive further communication regarding your application if additional information is required.</p>
+        <p>For questions or concerns, please contact: <a href="mailto:scholarships@cig.ca">scholarships@cig.ca</a></p>
+    </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
