@@ -1,9 +1,13 @@
+/**
+ * CONFIGURATION
+ */
 const CONFIG = {
-    BACKEND_URL: "", // We will configure this in the deployment phase
+    BACKEND_URL: "https://script.google.com/macros/s/AKfycbw7N7oDZaISZz6KklFLEhmSXbhYsu7kVBQpX1hjK91WSk9Eg2lrepowQ1M1fcDJXg86hQ/exec", 
     DEADLINE: "2026-11-30T23:59:00-05:00", // Enforces Nov 30, 2026, 11:59 PM EST
     MAX_FILE_SIZE_MB: 10
 };
 
+// Check deadline on load
 document.addEventListener("DOMContentLoaded", () => {
     const now = new Date();
     const deadline = new Date(CONFIG.DEADLINE);
@@ -27,6 +31,7 @@ function toggleOtherRelation() {
     }
 }
 
+// File Validation & UI
 function handleFileSelect(event, cardId) {
     const file = event.target.files[0];
     const nameDisplay = document.getElementById(`filename-${cardId}`);
@@ -56,15 +61,31 @@ function handleFileSelect(event, cardId) {
     nameDisplay.textContent = file.name;
 }
 
-// Temporary submission handler to validate frontend before backend integration
+// Convert File to Base64 Promise for Google Apps Script transit
+const fileToBase64 = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = error => reject(error);
+});
+
+// Form Submission Logic
 document.getElementById('scholarshipForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const form = e.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const loadingState = document.getElementById('loadingState');
+    const loadingText = document.getElementById('loadingText');
+    const systemError = document.getElementById('system-error');
+    
+    // 1. Validation
     let isValid = true;
     const requiredInputs = form.querySelectorAll('[required]');
     
+    // Clear previous errors
     form.querySelectorAll('.form-group, .upload-card, .declaration-section').forEach(el => el.classList.remove('invalid'));
+    systemError.classList.add('hidden');
     
     for (let input of requiredInputs) {
         if (!input.value || (input.type === 'checkbox' && !input.checked)) {
@@ -80,8 +101,24 @@ document.getElementById('scholarshipForm').addEventListener('submit', async (e) 
         return;
     }
 
-    // UI Feedback pending backend connection
-    document.getElementById('submitBtn').classList.add('hidden');
-    document.getElementById('loadingState').classList.remove('hidden');
-    document.getElementById('loadingText').textContent = "Frontend validation complete. Ready for backend deployment step.";
-});
+    // 2. Prepare Data
+    submitBtn.classList.add('hidden');
+    loadingState.classList.remove('hidden');
+
+    const formData = {
+        fullName: form.fullName.value.trim(),
+        age: form.age.value,
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        program: form.program.value.trim(),
+        membershipEmail: form.membershipEmail.value.trim(),
+        refName: form.refName.value.trim(),
+        refPhone: form.refPhone.value.trim(),
+        refEmail: form.refEmail.value.trim(),
+        refTitle: form.refTitle.value.trim(),
+        refRelation: form.refRelation.value === 'Other' ? form.refRelationOther.value : form.refRelation.value,
+        timestamp: new Date().toISOString()
+    };
+
+    try {
+        // STEP
