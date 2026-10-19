@@ -19,7 +19,7 @@
         <h1>Al Mahdi Scholarship Program Application</h1>
     </header>
 
-    <section class="intro-section">
+    <section class="intro-section" id="introSection">
         <div class="deadline-card glass-element">
             <strong>APPLICATION DEADLINE</strong><br>
             November 30, 2026 at 11:59 PM
@@ -158,45 +158,3 @@
 
                 <div class="upload-card glass-element" id="card-proofOfAdmission">
                     <label for="proofOfAdmission">Proof of Admission <span class="required">*</span></label>
-                    <input type="file" id="proofOfAdmission" accept="application/pdf" required onchange="handleFileSelect(event, 'proofOfAdmission')">
-                    <div class="file-name" id="filename-proofOfAdmission">No file selected</div>
-                </div>
-
-                <div class="upload-card glass-element" id="card-recLetter">
-                    <label for="recLetter">Letter of Recommendation <span class="required">*</span></label>
-                    <input type="file" id="recLetter" accept="application/pdf" required onchange="handleFileSelect(event, 'recLetter')">
-                    <div class="file-name" id="filename-recLetter">No file selected</div>
-                </div>
-
-                <div class="upload-card glass-element" id="card-essay">
-                    <label for="essay">Essay Response <span class="required">*</span></label>
-                    <input type="file" id="essay" accept="application/pdf" required onchange="handleFileSelect(event, 'essay')">
-                    <div class="file-name" id="filename-essay">No file selected</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Declaration -->
-        <section class="form-section declaration-section">
-            <label class="checkbox-container">
-                <input type="checkbox" id="declaration" required>
-                <span class="checkmark"></span>
-                <span class="declaration-text">I certify that the information provided is complete and accurate. <span class="required">*</span></span>
-            </label>
-        </section>
-
-        <div id="system-error" class="hidden error-alert glass-element"></div>
-
-        <div class="submit-container">
-            <button type="submit" id="submitBtn" class="glass-button">Submit Application</button>
-            <div id="loadingState" class="hidden glass-element loading-card">
-                <div class="spinner"></div>
-                <span id="loadingText">Initializing submission...</span>
-            </div>
-        </div>
-    </form>
-</main>
-
-<script src="script.js"></script>
-</body>
-</html>
